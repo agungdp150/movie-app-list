@@ -1,25 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Header} from './components/ui-components'
+import Homepage from './components/pages/homepage/Homepage'
+import DetailMovie from './components/pages/detailMovie/DetailMovie'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+// REDUX
+import store from './redux/store'
+import {Provider} from 'react-redux'
+
+import 'spectre.css';
+import './App.scss'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  return (     
+    <Provider store={store}>
+      <BrowserRouter>      
+        <div className='body-container'>        
+          <div className='container container__content'>   
+            <Header/>
+            <Routes>   
+              <Route path="/" element={<Homepage/>} />                                         
+              <Route path="/details/:id" element={<DetailMovie/>} />                                         
+            </Routes>
+          </div>        
+        </div>      
+      </BrowserRouter>
+    </Provider>    
   );
 }
 
