@@ -21,7 +21,7 @@ const Homepage: React.FC<HomepageProps> = (props) => {
   const getAllMovie = async () => {
     setLoading(true)
     try {
-      const result =  await axios.get(`http://www.omdbapi.com/?s=${searchValue ? searchValue : 'inception'}&apikey=419794c2&page=${currentPage ?? '1'}`)      
+      const result =  await axios.get(`https://www.omdbapi.com/?s=${searchValue ? searchValue : 'inception'}&apikey=419794c2&page=${currentPage ?? '1'}`)      
       if (result.data) {                    
         setLoading(false)
         setMovieItems(result.data.Search)        
